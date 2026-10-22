@@ -34,6 +34,7 @@ fun Character.message(
     if (this !is Player) {
         return
     }
+    val text = GameMessageFeedback.normalize(text, type)
     getOrPut("messages") { FixedSizeQueue<String>(100) }.add(text)
     val font = get<FontDefinitions>().get("p12_full")
     for (line in font.splitLines(Colours.replaceCustomTags(text), if (type == ChatType.Console) 600 else 484)) {
