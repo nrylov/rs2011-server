@@ -3,9 +3,13 @@ package content.quest
 import world.gregs.voidps.engine.client.sendScript
 import world.gregs.voidps.engine.client.ui.open
 import world.gregs.voidps.engine.data.Settings
+import world.gregs.voidps.engine.data.definition.EnumDefinitions
+import world.gregs.voidps.engine.data.definition.QuestDefinitions
+import world.gregs.voidps.engine.data.definition.StructDefinitions
 import world.gregs.voidps.engine.data.definition.VariableDefinitions
 import world.gregs.voidps.engine.entity.character.player.Player
 import world.gregs.voidps.engine.entity.item.Item
+import world.gregs.voidps.engine.get
 
 val quests = setOf(
     // free
@@ -68,6 +72,24 @@ fun Player.questCompleted(name: String): Boolean {
 
 fun Player.refreshQuestJournal() {
     sendScript("quest_journal_refresh")
+    showUnavailableQuests()
+}
+
+/** Keep colour in the label so client-side hover and sorting cannot restore a red colour. */
+internal fun Player.showUnavailableQuests() {
+    if (!interfaces.contains("quest_journals")) return
+    val definitions = get<QuestDefinitions>()
+    // These are the same struct/enum/label parameters used by revision-634 scripts 2160/2162.
+    val list = StructDefinitions.get(508).getOrNull<Int>(61) ?: return
+    val rows = EnumDefinitions.getOrNull(list)?.map ?: return
+    for ((index, value) in rows) {
+        val struct = StructDefinitions.getOrNull(value as? Int ?: continue) ?: continue
+        val label = struct.getOrNull<String>(845) ?: continue
+        val quest = definitions.getOrNull(index)
+        val key = quest?.stringId ?: label.lowercase().replace("'", "").replace(" ", "_")
+        if (key in quests) continue
+        sendScript("interface_child_text", (190 shl 16) or 18, index, "<col=888888>$label</col>")
+    }
 }
 
 private const val QUEST_SCROLL_ID = "quest_scroll"

@@ -336,3 +336,8 @@ params = [
   "interface",
   "colour"
 ]
+
+# Revision 634: (parent component, dynamic child index, text).
+[interface_child_text]
+id = 1624
+params = ["parent", "child", "text"]
