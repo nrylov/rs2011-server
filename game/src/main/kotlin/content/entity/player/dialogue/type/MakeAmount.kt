@@ -45,6 +45,10 @@ suspend fun Player.makeAmountIndex(
 
     setItemOptions(this, items, names)
     setMax(this, maximum.coerceAtLeast(1))
+    // Native CS2 varcs start at -1. The server's default Make=0 may not
+    // produce a change packet, leaving script 711 unable to build products.
+    // Send this after the product variables so the rebuild sees current data.
+    sendVariable("skill_creation_type")
     val choice: Int = pauseInt()
     close(INTERFACE_ID)
     close(INTERFACE_AMOUNT_ID)
