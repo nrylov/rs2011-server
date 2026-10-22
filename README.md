@@ -111,6 +111,8 @@ Run spotless before commiting to ensure formatting is correct:
 
 For further guides on how to write content please refer to the [Void Wiki](https://greghib.github.io/void/docs/).
 
+See [Ported server fixes](docs/server-fixes.md) for the local fix history, scope and validation instructions.
+
 ## AI Policy
 
 The vast majority of this project was written by hand. AI-assisted contributions are welcome but held to the same bar as any other submission:
