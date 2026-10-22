@@ -4,6 +4,7 @@ import FakeRandom
 import WorldTest
 import containsMessage
 import objectOption
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -17,6 +18,36 @@ import world.gregs.voidps.type.setRandom
 import kotlin.random.Random
 
 internal class MiningTest : WorldTest() {
+
+    @Test
+    fun `Tutorial copper becomes a depleted rock then respawns`() {
+        checkDepletedRock("copper_rocks_tutorial_island_1", "copper_ore", "depleted_rocks_old_1")
+    }
+
+    @Test
+    fun `Tutorial tin becomes a depleted rock then respawns`() {
+        checkDepletedRock("tin_rocks_tutorial_island_1", "tin_ore", "depleted_rocks_old_1")
+    }
+
+    @Test
+    fun `Valid depleted mappings keep their original rock variant`() {
+        checkDepletedRock("tin_rocks_rock_1", "tin_ore", "depleted_rocks_rock_1")
+    }
+
+    private fun checkDepletedRock(id: String, ore: String, depleted: String) {
+        setRandom(Random)
+        val player = createPlayer(emptyTile)
+        player.levels.set(Skill.Mining, 100)
+        val tile = emptyTile.addY(1)
+        val rock = createObject(id, tile)
+        player.inventory.add("bronze_pickaxe")
+        player.objectOption(rock, "Mine")
+        tickIf { !player.inventory.contains(ore) }
+        assertTrue(player.inventory.contains(ore))
+        assertEquals(depleted, GameObjects.getLayer(tile, ObjectLayer.GROUND)?.id)
+        tickIf { GameObjects.getLayer(tile, ObjectLayer.GROUND)?.id != id }
+        assertEquals(id, GameObjects.getLayer(tile, ObjectLayer.GROUND)?.id)
+    }
 
     @Test
     fun `Mining gives ore and depletes`() {

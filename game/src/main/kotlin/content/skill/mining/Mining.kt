@@ -14,6 +14,7 @@ import world.gregs.voidps.engine.client.variable.remaining
 import world.gregs.voidps.engine.client.variable.start
 import world.gregs.voidps.engine.client.variable.stop
 import world.gregs.voidps.engine.data.config.RowDefinition
+import world.gregs.voidps.engine.data.definition.ObjectDefinitions
 import world.gregs.voidps.engine.data.definition.Rows
 import world.gregs.voidps.engine.data.definition.Tables
 import world.gregs.voidps.engine.entity.World
@@ -224,7 +225,10 @@ class Mining : Script {
             return false
         }
         val ticks = if (ore.rowId == "clay") life else ResourceRespawn.ticks(life) // Clay always respawns in 2 ticks regardless of players
-        GameObjects.replace(obj, obj.def["depleted", "depleted${obj.id.dropWhile { it != '_' }}"], ticks = ticks)
+        val depleted = obj.def["depleted", "depleted${obj.id.dropWhile { it != '_' }}"]
+        // Unknown definitions resolve to id -1, which would remove the rock entirely.
+        val replacement = if (ObjectDefinitions.contains(depleted)) depleted else "depleted_rocks_old_1"
+        GameObjects.replace(obj, replacement, ticks = ticks)
         return true
     }
 }
