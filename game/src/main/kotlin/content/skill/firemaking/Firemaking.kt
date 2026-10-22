@@ -118,7 +118,11 @@ class Firemaking : Script {
     }
 
     private fun Player.canLightOn(tile: Tile): Boolean {
-        if (GameObjects.getLayer(tile, ObjectLayer.GROUND) != null || GameObjects.getLayer(tile, ObjectLayer.GROUND_DECORATION) != null || doorway(tile)) {
+        // Match GameObjectCollision: most floor decorations (including path detail)
+        // do not block movement and can share a tile with a fire on the ground layer.
+        val decoration = GameObjects.getLayer(tile, ObjectLayer.GROUND_DECORATION)?.def
+        val blockedDecoration = decoration != null && decoration.interactive == 1 && decoration.solid == 1
+        if (GameObjects.getLayer(tile, ObjectLayer.GROUND) != null || blockedDecoration || doorway(tile)) {
             message("You can't light a fire here.")
             return false
         }
