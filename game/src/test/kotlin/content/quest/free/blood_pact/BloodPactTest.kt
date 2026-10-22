@@ -3,8 +3,10 @@ package content.quest.free.blood_pact
 import WorldTest
 import content.entity.combat.hit.damage
 import content.entity.effect.transform
+import content.quest.instance
 import content.quest.instanceOffset
 import content.quest.quest
+import content.quest.questStage
 import dialogueContinue
 import dialogueOption
 import interfaceOption
@@ -49,6 +51,10 @@ class BloodPactTest : WorldTest() {
         player.skipDialogues() // "I knew you would!" / "We've got no time to lose..."
         assertNull(player.dialogue)
         assertEquals("started", player.quest("blood_pact"))
+        assertEquals(10, player.questStage("blood_pact"))
+        assertEquals(11476, xenia.def(player).id)
+        assertEquals(Tile(3245, 3198, 0), player.tile)
+        assertNull(player.instance())
 
         // Climb down into the catacombs, triggering the intro cutscene
         val stairs = GameObjects.find(Tile(3247, 3197, 0), "lumbridge_catacomb_stairs")

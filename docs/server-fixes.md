@@ -49,3 +49,20 @@ The live game server was not replaced while porting this code. Its existing save
 Quest definitions store their title and point reward in dedicated `name` and `questPoints` fields. The quest-start screen previously read generic extra parameters instead, resulting in empty titles and omitted quest-point rewards after the real definition loader ran. `QuestStart` now reads the canonical fields directly.
 
 Validation includes the five existing quest-start dialogue tests and a world regression that opens The Restless Ghost's offer using loaded definitions and verifies its title and one-point reward. The mock fixture deliberately provides a conflicting legacy name parameter to catch accidental reuse of the old path. All six tests and changed-file formatting checks pass. This is a base-game fix with no SDK dependency; it takes effect after rebuilding/deploying the game server. The live development server was not restarted for this change.
+
+## Follow-up: Xenia after accepting The Blood Pact
+
+The server encoded the named `blood_pact` state `started` as 1. Revision 634's
+cache resolves surface Xenia to a hidden form at that value, making her vanish
+as soon as the player accepted the quest. Encode `started` as 10, which
+resolves to visible Xenia, while preserving the underground, rescued and
+completed state mappings. No cache modifications or per-client overrides
+are needed. Persistent saves retain the named state, so existing characters
+need no progress reset or save migration.
+
+The full Blood Pact world test now checks that acceptance keeps Xenia visible
+at the same surface tile without creating an instance, then completes the
+cutscene and entire quest. Two regressions additionally check a saved named
+`started` state and the other cache forms. All three tests and scoped Kotlin
+formatting checks pass against the prepared cache. The fix requires deploying
+the updated server configuration; the live server was left untouched.

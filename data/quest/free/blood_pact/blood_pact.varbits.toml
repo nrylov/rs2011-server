@@ -5,7 +5,8 @@ format = "map"
 default = "unstarted"
 values = {
     unstarted = 0,
-    started = 1,
+    # Surface Xenia is visible at 10; 1 selects the hidden underground form.
+    started = 10,
     watched_cutscene = 2,
     kayle = 3,
     xenia_wounded = 4,
