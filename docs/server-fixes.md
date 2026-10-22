@@ -43,3 +43,9 @@ With `JAVA_HOME` pointing to a full Java 21 JDK, run the combined affected test 
 A normal build includes these changes directly. Run the rebuilt server with its own generated script registry; the compatibility overlay used by the earlier release is no longer needed for these fixes. Local cache files, test saves and JDK installations are not included in the commits.
 
 The live game server was not replaced while porting this code. Its existing saves and running sessions were left alone. This port covers the implemented fixes listed above; other reported issues remain separate work.
+
+## Follow-up: quest offer metadata
+
+Quest definitions store their title and point reward in dedicated `name` and `questPoints` fields. The quest-start screen previously read generic extra parameters instead, resulting in empty titles and omitted quest-point rewards after the real definition loader ran. `QuestStart` now reads the canonical fields directly.
+
+Validation includes the five existing quest-start dialogue tests and a world regression that opens The Restless Ghost's offer using loaded definitions and verifies its title and one-point reward. The mock fixture deliberately provides a conflicting legacy name parameter to catch accidental reuse of the old path. All six tests and changed-file formatting checks pass. This is a base-game fix with no SDK dependency; it takes effect after rebuilding/deploying the game server. The live development server was not restarted for this change.

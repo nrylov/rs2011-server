@@ -34,7 +34,7 @@ suspend fun Player.startQuest(questId: String): Boolean {
     }
     interfaces.sendText("quest_intro", "status_field", status)
     sendVariable("quest_intro_mark_map")
-    interfaces.sendText("quest_intro", "quest_field", quest["name", ""])
+    interfaces.sendText("quest_intro", "quest_field", quest.name.orEmpty())
     var requirements = buildString {
         for (q in quest["req_quests", emptyList<String>()]) {
             append(questDefinitions.get(q).name)
@@ -64,8 +64,8 @@ suspend fun Player.startQuest(questId: String): Boolean {
     interfaces.sendText("quest_intro", "items_field", items)
     sendScript("quest_intro_req_items_text", items)
     val rewards = buildString {
-        if (quest.contains("points")) {
-            val points = quest["points", -1]
+        if (quest.questPoints >= 0) {
+            val points = quest.questPoints
             append("$points Quest ${"Point".plural(points)}<br>")
         }
         if (quest.contains("xp")) {

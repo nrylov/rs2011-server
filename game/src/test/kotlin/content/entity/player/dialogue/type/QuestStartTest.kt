@@ -22,9 +22,10 @@ internal class QuestStartTest : DialogueTest() {
             every { this@declareMock.getOrNull(any<String>()) } returns null
             every { this@declareMock.getOrNull("test_quest") } returns QuestDefinition(
                 id = 1234,
-                name = "magic",
+                name = "quest_name",
+                questPoints = 1,
                 params = mapOf(
-                    Params.NAME to "quest_name",
+                    Params.NAME to "obsolete_parameter_name",
                 ),
             )
         }
@@ -41,6 +42,7 @@ internal class QuestStartTest : DialogueTest() {
             player.open("quest_intro")
             interfaces.sendText("quest_intro", "status_field", "Not started")
             interfaces.sendText("quest_intro", "quest_field", "quest_name")
+            interfaces.sendText("quest_intro", "rewards_field", "1 Quest Point")
             interfaces.sendVisibility("quest_intro", "start_choice_layer", true)
             interfaces.sendVisibility("quest_intro", "progress_status_layer", false)
         }
