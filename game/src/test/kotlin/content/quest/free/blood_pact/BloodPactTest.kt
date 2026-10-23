@@ -131,24 +131,33 @@ class BloodPactTest : WorldTest() {
     }
 
     @Test
-    fun `Kayle's sling stays private and available beyond the old timer after sparing or killing him`() {
-        for (choice in listOf(2, 3)) {
-            val player = createPlayer(Tile(3877, 5542, 1))
-            player["blood_pact"] = "kayle"
-            player["blood_pact_kayle"] = "defeated"
-            val kayle = NPCs.add("kayle_defeated", Tile(3877, 5543, 1))
-            tick()
-            player.talkAt(kayle, Tile(3877, 5542, 1), "Talk-to")
-            player.skipDialogues()
-            player.dialogueOption(choice)
-            player.runUntilIdle { player.quest("blood_pact") == "caitlin" }
-            val sling = FloorItems.first(Tile(3877, 5543, 1)) { it.id == "kayles_sling" && it.owner == player.name }
-            assertEquals(FloorItems.NEVER, sling.disappearTicks)
-            repeat(1000) { FloorItems.run() }
-            assertEquals(sling, FloorItems.firstOrNull(sling.tile) { it === sling })
-            assertEquals(player.name, sling.owner)
-            // The permanent lifetime must not prevent ordinary removal on pickup or instance cleanup.
-            assertEquals(true, FloorItems.remove(sling))
+    fun `All cultist weapon drops stay private beyond the old timer for both dialogue outcomes`() {
+        val cultists = listOf(
+            Triple("kayle", Tile(3877, 5543, 1), Tile(3877, 5542, 1)),
+            Triple("caitlin", Tile(3864, 5538, 1), Tile(3863, 5538, 1)),
+            Triple("reese", Tile(3865, 5525), Tile(3864, 5525)),
+        )
+        val weapons = mapOf("kayle" to "kayles_sling", "caitlin" to "caitlins_staff", "reese" to "reeses_sword")
+        for ((cultist, dropTile, approachTile) in cultists) {
+            for (choice in listOf(2, 3)) {
+                val player = createPlayer(approachTile)
+                val status = "blood_pact_$cultist"
+                player["blood_pact"] = cultist
+                player[status] = "defeated"
+                val npc = NPCs.add("${cultist}_defeated", dropTile)
+                tick()
+                player.talkAt(npc, approachTile, "Talk-to")
+                player.skipDialogues()
+                player.dialogueOption(choice)
+                player.runUntilIdle { player[status, ""] in setOf("killed", "spared") }
+                val weapon = FloorItems.first(dropTile) { it.id == weapons.getValue(cultist) && it.owner == player.name }
+                assertEquals(FloorItems.NEVER, weapon.disappearTicks)
+                repeat(1000) { FloorItems.run() }
+                assertEquals(weapon, FloorItems.firstOrNull(weapon.tile) { it === weapon })
+                assertEquals(player.name, weapon.owner)
+                // No timer expiry, but pickup and instance cleanup can still remove the item.
+                assertEquals(true, FloorItems.remove(weapon))
+            }
         }
     }
 

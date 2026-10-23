@@ -150,7 +150,7 @@ class Reese : Script {
         delay(4)
         NPCs.remove(target)
         // TODO: make drop on death tile
-        FloorItems.add(instanceOffset().tile(3865, 5525, 0), "reeses_sword", disappearTicks = 300, owner = this)
+        FloorItems.add(instanceOffset().tile(3865, 5525, 0), "reeses_sword", disappearTicks = FloorItems.NEVER, owner = this)
         // Altar crumbles when Reese dies
         val altar = GameObjects.findOrNull(instanceOffset().tile(3865, 5524, 0), "blood_pact_altar")
         if (altar != null) GameObjects.remove(altar)
