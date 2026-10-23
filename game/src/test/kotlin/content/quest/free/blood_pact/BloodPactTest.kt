@@ -22,7 +22,9 @@ import world.gregs.voidps.engine.entity.character.move.tele
 import world.gregs.voidps.engine.entity.character.npc.NPC
 import world.gregs.voidps.engine.entity.character.npc.NPCs
 import world.gregs.voidps.engine.entity.character.player.Player
+import world.gregs.voidps.engine.entity.character.player.name
 import world.gregs.voidps.engine.entity.character.player.skill.Skill
+import world.gregs.voidps.engine.entity.item.floor.FloorItems
 import world.gregs.voidps.engine.entity.obj.GameObjects
 import world.gregs.voidps.engine.suspend.Suspension
 import world.gregs.voidps.type.Tile
@@ -126,6 +128,28 @@ class BloodPactTest : WorldTest() {
         player.skipDialogues() // "Farewell, adventurer."
         tick(1)
         assertEquals("completed", player.quest("blood_pact"))
+    }
+
+    @Test
+    fun `Kayle's sling stays private and available beyond the old timer after sparing or killing him`() {
+        for (choice in listOf(2, 3)) {
+            val player = createPlayer(Tile(3877, 5542, 1))
+            player["blood_pact"] = "kayle"
+            player["blood_pact_kayle"] = "defeated"
+            val kayle = NPCs.add("kayle_defeated", Tile(3877, 5543, 1))
+            tick()
+            player.talkAt(kayle, Tile(3877, 5542, 1), "Talk-to")
+            player.skipDialogues()
+            player.dialogueOption(choice)
+            player.runUntilIdle { player.quest("blood_pact") == "caitlin" }
+            val sling = FloorItems.first(Tile(3877, 5543, 1)) { it.id == "kayles_sling" && it.owner == player.name }
+            assertEquals(FloorItems.NEVER, sling.disappearTicks)
+            repeat(1000) { FloorItems.run() }
+            assertEquals(sling, FloorItems.firstOrNull(sling.tile) { it === sling })
+            assertEquals(player.name, sling.owner)
+            // The permanent lifetime must not prevent ordinary removal on pickup or instance cleanup.
+            assertEquals(true, FloorItems.remove(sling))
+        }
     }
 
     /**
