@@ -56,7 +56,8 @@ from older runtime builds or agent assumptions and may already be resolved.
 ## Upstream contributions
 
 - [ ] Review and submit the separate Ernest, Vampire Slayer and Tutorial Island
-  topic branches after independent validation. Branch names/worktrees and scope
+  topic branches (independent tests passed: Ernest 10, Vampire 9, Tutorial 138).
+  Branch names/worktrees and scope
   are recorded in PROJECT_CONTEXT.md; no upstream PR has been opened yet.
 - [ ] Prepare other fixes on separate upstream-based branches when requested.
   The Tutorial Island rat fix is already upstream and needs no duplicate PR.

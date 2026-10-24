@@ -41,7 +41,7 @@ Use separate topic branches from `upstream/main`, not the integrated fork main,
 for upstream PRs. Existing isolated worktrees beside this repository:
 
 - `feature/ernest-the-chicken` in `rs2011-server-ernest-the-chicken`: the required
-  varbit-1795 placeholder correction and Ernest implementation/tests/license.
+  varbit-1795 placeholder correction and Ernest implementation/tests.
 - `feature/vampire-slayer` in `rs2011-server-vampire-slayer`: quest implementation
   and skeleton-compatible Count animations; exact staking presentation remains
   deferred as recorded below. No Ernest dependency.
@@ -51,8 +51,10 @@ for upstream PRs. Existing isolated worktrees beside this repository:
   other quest changes are separate contributions.
 
 Each branch starts at upstream `b3ddc3f67` and excludes SDK integration and our
-shared contributor notes. Validate each branch independently before proposing
-its PR; do not merge these topic branches into one another. A PR can retain
+shared contributor notes. Independent Java 21 checks passed 10 Ernest, 9 Vampire
+Slayer and 138 Tutorial Island tests, with no failures or skips. No upstream PR
+has been opened. When preparing PRs target GregHib/void main, not fork main;
+do not merge these topic branches into one another. A PR can retain
 several related commits. Worktrees preserve the integrated main checkout.
 
 ## Existing changes to know about
@@ -115,8 +117,10 @@ canonical state keys, journal thresholds and cache selectors consistent.
 
 Verify revision-634 IDs, morphs, menu slots and placements against the prepared
 cache. Use 2004/2009 projects as behavioral references; their IDs are not portable.
-Do not mechanically translate incompatible licensed code. The Lost City/MIT
-notice for Ernest's adapted gate conditions is in `LICENSES/lost-city.txt`.
+Do not mechanically translate incompatible licensed code. Lost City and
+2009scape are historical behavior references for Ernest; the
+user clarified that Lost City code was not reused. Earlier adaptation wording
+and the standalone Lost City license file were removed accordingly.
 
 Tests need a **full Java 21 JDK** and the prepared/decrypted revision-634 cache
 at `data/cache`. A mismatched/encrypted cache can fail before a world test starts;
