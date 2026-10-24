@@ -65,6 +65,9 @@ examine = "She comes from Al Kharid."
 
 [undead_tree_draynor]
 id = 152
+hunt_mode = "nasty_tree"
+hunt_range = 1
+examine = "Its bark is worse than its swipe."
 
 [undead_tree_draynor_1]
 id = 5207

@@ -44,6 +44,11 @@ Tutorial Island feedback and quest-message normalization without requiring an SD
   transformation/passage presentation is not an exact historical cinematic.
   See [implementation details](docs/ernest-the-chicken.md). A [rendered-client/SDK
   playtest](docs/ernest-playtest.md) verified completion, rewards and persistence.
+- Draynor Manor's non-choppable dead trees are NPC 152 (multi-NPC on varbit 3185,
+  default 5207 "Tree"; 5208 is Animal Magnetism's choppable undead tree). The
+  `nasty_tree` hunt mode swipes one adjacent player every 4 ticks for 0-20
+  lifepoints, matching 2004 placements and 2009scape's 0-1 HP swipe. The hit is
+  self-sourced so players don't auto-retaliate against an unattackable tree.
 - All three scripted Blood Pact weapon drops use `FloorItems.NEVER`. They remain
   private and are removed by pickup or instance cleanup. This does not change
   ordinary loot or recreate an already expired weapon.

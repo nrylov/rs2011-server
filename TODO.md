@@ -41,9 +41,10 @@ from older runtime builds or agent assumptions and may already be resolved.
 
 ## Deferred content and architecture
 
-- [ ] Draynor Manor's specific non-choppable dead trees should attack nearby
-  players, often for zero damage. Verify tree IDs, trigger range/timing,
-  animations/damage and Animal Magnetism interactions before implementing.
+- [ ] Visually confirm the Draynor Manor nasty-tree swipe (animation 73, sound
+  651) in the rendered client. The four `undead_tree_draynor` spawns east of the
+  manor (3137-3143, 3352-3365) share the NPC and also swipe; 2004 had no trees
+  there, so confirm that when Animal Magnetism is implemented.
 - [ ] Research a complete regular-client lobby with world/social service flow.
   The lightweight client does not need one. A separate lobby server is a design
   possibility, not an established implementation requirement yet.
@@ -53,6 +54,10 @@ from older runtime builds or agent assumptions and may already be resolved.
   This repository remains the Kotlin base; no server rewrite is underway.
 
 ## Recently completed
+
+- [x] Draynor Manor's non-choppable trees (NPC 152 -> 5207 "Tree") swipe adjacent
+  players every 4 ticks for 0-20 lifepoints via the `nasty_tree` hunt mode
+  (`NastyTree.kt`, `NastyTreeTest`). Source only; not yet deployed.
 
 - [x] Complete the rendered-client/SDK Ernest playtest, including the full lever
   route, recovery after death, native reward display, repeat-payment guard and

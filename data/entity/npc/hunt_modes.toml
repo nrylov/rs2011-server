@@ -118,6 +118,16 @@ check_not_combat_self = true
 check_not_busy = false
 check_afk = false
 
+# Draynor Manor's nasty trees swipe at anyone standing next to them
+[nasty_tree]
+type = "player"
+check_visual = "line_of_sight"
+check_not_too_strong = false
+check_not_combat = false
+check_not_busy = false
+check_afk = false
+rate = 4
+
 # Sorceress's Garden
 [spotted]
 type = "player"
