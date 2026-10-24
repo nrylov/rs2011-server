@@ -78,6 +78,8 @@ class Imp : Script {
             val mode = npc.mode
             npc.mode = PauseMode
             npc.tele(destination)
+            // Re-anchor so the combat leash and wander centre on where the imp landed; respawn uses respawn_tile
+            npc["spawn_tile"] = destination
             npc.delay(1)
             npc.gfx("imp_puff")
             npc.mode = mode

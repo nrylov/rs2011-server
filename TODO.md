@@ -64,6 +64,10 @@ from older runtime builds or agent assumptions and may already be resolved.
 
 ## Recently completed
 
+- [x] Imps fight back after teleporting: each teleport re-anchors `spawn_tile`
+  (respawn still uses `respawn_tile`), so the combat leash follows the imp
+  (`Imp.kt`, `ImpTest`). Source only; not yet deployed or watched in-game.
+
 - [x] Merge ten GregHib/void upstream commits through b3ddc3f67, preserving our
   fixes/content and upstream's equivalent rat change. Passed 505 gameplay,
   1,340 engine and 25 cache tests; eight existing engine/cache skips. Source
