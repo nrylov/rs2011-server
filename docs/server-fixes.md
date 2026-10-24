@@ -4,15 +4,15 @@ These changes bring the server fixes developed alongside `rs2011-ts` into the no
 
 |                                Change                                 |                                                 Commit                                                  |
 |-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| Do not advance tutorial skill stages on XP refreshes                  | [`c4027fc4f5`](https://github.com/nrylov/rs2011-server/commit/c4027fc4f5bf8e64eccf6f10a807100565813b5d) |
-| Keep Tutorial Island gates closed while eligible players pass through | [`ad85b1c79e`](https://github.com/nrylov/rs2011-server/commit/ad85b1c79e15814ffd8175f19b9e04951809288b) |
-| Display tutorial action refusals while chat history is hidden         | [`ada905a816`](https://github.com/nrylov/rs2011-server/commit/ada905a816cdc587872b533bf3294646df5333f0) |
-| Allow firemaking on nonblocking floor decorations                     | [`bf6e6b6fa7`](https://github.com/nrylov/rs2011-server/commit/bf6e6b6fa70b92da4c9f62951b9c887efe6ad903) |
-| Show depleted mining rocks when replacement definitions are missing   | [`d42af39243`](https://github.com/nrylov/rs2011-server/commit/d42af39243d971fa8edbeeaa509c2e8d67920a67) |
-| Disable autonomous aggression for Tutorial Island rats                | [`2c666dbdf4`](https://github.com/nrylov/rs2011-server/commit/2c666dbdf48761048c028811148194321b07153e) |
-| Restore tutorial instructions after client-side interface dismissal   | [`9315cbeb62`](https://github.com/nrylov/rs2011-server/commit/9315cbeb62c3d848084f584a2736ef4afe8c9695) |
-| Normalize quest completion titles and punctuation                     | [`6cde9d164f`](https://github.com/nrylov/rs2011-server/commit/6cde9d164fe8124ed116e8582739e75abe18399f) |
-| Initialize production menus with an explicit creation type            | [`79f8eb2327`](https://github.com/nrylov/rs2011-server/commit/79f8eb23272346bd9131e5acc20d9a2742784f76) |
+| Do not advance tutorial skill stages on XP refreshes                  | [`84de710865`](https://github.com/nrylov/rs2011-server/commit/84de7108659cd9c1fa29c4839ba21142a7abe7ac) |
+| Keep Tutorial Island gates closed while eligible players pass through | [`f86157f6a7`](https://github.com/nrylov/rs2011-server/commit/f86157f6a7309044db6b8c676f9c4a49385244c4) |
+| Display tutorial action refusals while chat history is hidden         | [`09131647e1`](https://github.com/nrylov/rs2011-server/commit/09131647e12739e75342ac4c22a3dd5883179667) |
+| Allow firemaking on nonblocking floor decorations                     | [`52473e01a3`](https://github.com/nrylov/rs2011-server/commit/52473e01a37d2ee56c41404365233a3b363b06ac) |
+| Show depleted mining rocks when replacement definitions are missing   | [`b0b6f54a48`](https://github.com/nrylov/rs2011-server/commit/b0b6f54a481e61f12f474473eae2b4fb15432791) |
+| Disable autonomous aggression for Tutorial Island rats                | [`2e571892d3`](https://github.com/nrylov/rs2011-server/commit/2e571892d3c688b1921ecda3f57f3937dfc4268a) |
+| Restore tutorial instructions after client-side interface dismissal   | [`e0d7681259`](https://github.com/nrylov/rs2011-server/commit/e0d7681259afa0908539510a3f15fe965d6a75d8) |
+| Normalize quest completion titles and punctuation                     | [`c36cb7d72d`](https://github.com/nrylov/rs2011-server/commit/c36cb7d72d38ca11e410f8884b1538763e35ede3) |
+| Initialize production menus with an explicit creation type            | [`90714aa76e`](https://github.com/nrylov/rs2011-server/commit/90714aa76e62a0b070d3efd226532ed072b5b042) |
 
 ## Validation
 

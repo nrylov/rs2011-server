@@ -7,12 +7,6 @@ SDK/client issues belong in the sibling
 
 ## Next session
 
-- [ ] Coordinate the pending commit-message rewrite with rs2011-ts. Review of the
-  19 project commits after upstream `aa566b0d0` is complete; no history rewrite
-  has happened. Back up and preserve code trees, topology, identities, dates,
-  trailers and signatures; leave upstream history alone. Update commit links in
-  `docs/server-fixes.md` afterward in a new commit. User authorized guarded
-  force-pushing. Keep the new collaboration documentation intact.
 - [ ] Deploy Caitlin/Reese's non-expiring quest weapons at a coordinated restart.
   Base source is committed/tested; compatibility overlay is staged in the SDK
   repo's ignored dev directory. Kayle is already deployed. Verify manifest/hash
@@ -69,6 +63,11 @@ from older runtime builds or agent assumptions and may already be resolved.
   This repository remains the Kotlin base; no server rewrite is underway.
 
 ## Recently completed
+
+- [x] Reword the 58 SDK/client and 19 base-server project commits with readable
+  problem/behavior/implementation/validation explanations. Preserved trees,
+  topology, identities, dates and contributor trailers; re-signed replacements.
+  See [history maintenance](docs/history-maintenance.md) for scope and backups.
 
 - [x] Playable Vampire Slayer, correct original reward, compatible Count combat
   animation definitions and gray native quest entries for unimplemented content.
