@@ -78,8 +78,9 @@ several related commits. Worktrees preserve the integrated main checkout.
 - Ernest the Chicken is playable with personal fountain/tube/lever puzzles and
   **4 quest points, 3,000 coins, 10 noted eggs and 300 feathers**. Its short
   transformation/passage presentation is not an exact historical cinematic.
-  See [implementation details](docs/ernest-the-chicken.md). A [rendered-client/SDK
-  playtest](docs/ernest-playtest.md) verified completion, rewards and persistence.
+  A rendered-client/SDK playtest verified completion, rewards and persistence.
+  Local implementation and playtest notes are under ignored `dev/notes/`; they
+  are development records, not part of the upstream contribution.
 - Draynor Manor's non-choppable dead trees are NPC 152 (multi-NPC on varbit 3185,
   default 5207 "Tree"; 5208 is Animal Magnetism's choppable undead tree). The
   `nasty_tree` hunt mode swipes one adjacent player every 4 ticks for 0-20
@@ -110,7 +111,8 @@ also be 1795 and do not establish a varbit's purpose.
 ## Working on content and validating it
 
 Start with [quest contribution guide](docs/quest-contributing.md),
-[Ernest details](docs/ernest-the-chicken.md), and existing neighboring scripts.
+local Ernest notes in `dev/notes/ernest-the-chicken.md` when available, and
+existing neighboring scripts.
 Game handlers live under `game/src/main/kotlin/content/`; corresponding TOML
 lives under `data/`. Register a quest only when its playable flow exists. Keep
 canonical state keys, journal thresholds and cache selectors consistent.

@@ -76,7 +76,7 @@ from older runtime builds or agent assumptions and may already be resolved.
 
 - [x] Complete the rendered-client/SDK Ernest playtest, including the full lever
   route, recovery after death, native reward display, repeat-payment guard and
-  fresh-login/save persistence. See [report](docs/ernest-playtest.md).
+  fresh-login/save persistence. Local report: `dev/notes/ernest-playtest.md`.
 
 - [x] Activate all three Blood Pact private no-expiry drops in the local release
   runtime, with verified overlay hashes, save backups and unchanged XP settings.
