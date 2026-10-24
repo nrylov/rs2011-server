@@ -42,7 +42,8 @@ Tutorial Island feedback and quest-message normalization without requiring an SD
 - Ernest the Chicken is playable with personal fountain/tube/lever puzzles and
   **4 quest points, 3,000 coins, 10 noted eggs and 300 feathers**. Its short
   transformation/passage presentation is not an exact historical cinematic.
-  See [implementation details](docs/ernest-the-chicken.md).
+  See [implementation details](docs/ernest-the-chicken.md). A [rendered-client/SDK
+  playtest](docs/ernest-playtest.md) verified completion, rewards and persistence.
 - All three scripted Blood Pact weapon drops use `FloorItems.NEVER`. They remain
   private and are removed by pickup or instance cleanup. This does not change
   ordinary loot or recreate an already expired weapon.
@@ -103,13 +104,13 @@ must match; do not copy a newly built class into that release indiscriminately.
 A normal deployment of this source uses its own generated metadata and matching
 data. Base-game fixes do not intrinsically require the old SDK overlay.
 
-At shutdown on 2026-10-23, Ernest and Kayle's no-expiry sling were deployed in
-that development runtime. Caitlin/Reese's matching drop changes are committed
-here but only staged there. The pending overlay manifest is under
-`rs2011-ts/dev/staged/blood-pact-weapon-lifetimes/`. Inspect hashes before
-activation. The user's temporary **10x XP** is an ignored local setting, not an
-upstream default. Services were stopped at the user's request; verify actual
-listeners and deployment records before resuming.
+On 2026-10-23, the remaining Caitlin/Reese drop changes were activated after
+verifying old/staged overlay hashes and backing up saves, configuration and the
+previous overlay. All three Blood Pact weapons now share the no-expiry behavior
+in the local release. Main game/gateway/client services are online; an agent is
+playing, so coordinate reloads. `rs2011-ts/dev/backups/last-weapon-activation.json`
+is the private activation record. The user's temporary **10x XP** remains an
+ignored local setting, not an upstream default.
 
 ## Keeping context useful
 

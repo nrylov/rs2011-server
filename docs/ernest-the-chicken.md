@@ -24,7 +24,8 @@ Sources checked for this revision:
 Dialogue is concise original text. The transformation uses the existing NPC
 transform mechanism and a temporary actor cleaned up when the conversation
 ends. This is not a frame-for-frame reconstruction of the original machine
-cinematic. Browser playtesting is still needed for presentation and pacing.
+cinematic. A [rendered-client/SDK playtest](ernest-playtest.md) verified the playable flow,
+completion display and saved rewards; exact historical pacing remains separate.
 
 ## Revision-specific definitions
 

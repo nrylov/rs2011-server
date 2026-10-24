@@ -5,16 +5,6 @@ Reported issues below are not yet verified against current source unless stated.
 SDK/client issues belong in the sibling
 [rs2011-ts backlog](https://github.com/nrylov/rs2011-ts/blob/main/TODO.md).
 
-## Next session
-
-- [ ] Deploy Caitlin/Reese's non-expiring quest weapons at a coordinated restart.
-  Base source is committed/tested; compatibility overlay is staged in the SDK
-  repo's ignored dev directory. Kayle is already deployed. Verify manifest/hash
-  before activation and keep saves and the previous overlay backed up.
-- [ ] Playtest Ernest with a regular client and SDK. Verify personal gates/forms,
-  fountain/tube collection, transit and full-inventory rewards. Tests cover logic;
-  the transformation and secret-wall presentation remain simplified.
-
 ## Vampire Slayer presentation
 
 - [ ] Review the user's video when supplied locally:
@@ -63,6 +53,13 @@ from older runtime builds or agent assumptions and may already be resolved.
   This repository remains the Kotlin base; no server rewrite is underway.
 
 ## Recently completed
+
+- [x] Complete the rendered-client/SDK Ernest playtest, including the full lever
+  route, recovery after death, native reward display, repeat-payment guard and
+  fresh-login/save persistence. See [report](docs/ernest-playtest.md).
+
+- [x] Activate all three Blood Pact private no-expiry drops in the local release
+  runtime, with verified overlay hashes, save backups and unchanged XP settings.
 
 - [x] Reword the 58 SDK/client and 19 base-server project commits with readable
   problem/behavior/implementation/validation explanations. Preserved trees,
