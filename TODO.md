@@ -53,7 +53,21 @@ from older runtime builds or agent assumptions and may already be resolved.
 - [ ] Evaluate a separate clean modular TypeScript server base if prioritized.
   This repository remains the Kotlin base; no server rewrite is underway.
 
+## Upstream contributions
+
+- [ ] Review and submit the separate Ernest, Vampire Slayer and Tutorial Island
+  topic branches after independent validation. Branch names/worktrees and scope
+  are recorded in PROJECT_CONTEXT.md; no upstream PR has been opened yet.
+- [ ] Prepare other fixes on separate upstream-based branches when requested.
+  The Tutorial Island rat fix is already upstream and needs no duplicate PR.
+
 ## Recently completed
+
+- [x] Merge ten GregHib/void upstream commits through b3ddc3f67, preserving our
+  fixes/content and upstream's equivalent rat change. Passed 505 gameplay,
+  1,340 engine and 25 cache tests; eight existing engine/cache skips. Source
+  only: live game runtime and services were untouched.
+
 
 - [x] Draynor Manor's non-choppable trees (NPC 152 -> 5207 "Tree") swipe adjacent
   players every 4 ticks for 0-20 lifepoints via the `nasty_tree` hunt mode

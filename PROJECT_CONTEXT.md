@@ -21,6 +21,40 @@ Do not add SDK-specific login snapshots, monitoring or remote-control endpoints
 to the base server. Keep the shared message observer: it supports ordinary
 Tutorial Island feedback and quest-message normalization without requiring an SDK.
 
+## Upstream synchronization and contribution branches
+
+Merged the ten upstream GregHib/void commits through `b3ddc3f67` on
+2026-10-23. The common base before synchronization was `aa566b0d0`; original
+upstream commits and our contribution history are preserved in a merge.
+Upstream adds Gertrude's Cat, the Duel Arena, coal trucks, prayer behavior,
+Chaos Temple wine, navigation data, bot behavior and object-map cache fixes.
+
+The only textual conflict was Tutorial Island rats: upstream removed their
+hunt mode, equivalent to our explicit empty value. Keep the upstream definition;
+the retained regression accepts null/empty as inactive and still checks other
+rats. The quest registry retains our Ernest/Vampire content and upstream's
+Gertrude entry. Verification passed 505 gameplay, 1,340 engine and 25 cache
+tests, with eight existing engine/cache skips. The live release runtime, saves
+and SDK services were not changed or restarted.
+
+Use separate topic branches from `upstream/main`, not the integrated fork main,
+for upstream PRs. Existing isolated worktrees beside this repository:
+
+- `feature/ernest-the-chicken` in `rs2011-server-ernest-the-chicken`: the required
+  varbit-1795 placeholder correction and Ernest implementation/tests/license.
+- `feature/vampire-slayer` in `rs2011-server-vampire-slayer`: quest implementation
+  and skeleton-compatible Count animations; exact staking presentation remains
+  deferred as recorded below. No Ernest dependency.
+- `fix/tutorial-island` in `rs2011-server-tutorial-island`: actual skill progress,
+  personal gated passages, visible refusals and instruction recovery. The rat
+  fix is already upstream and is omitted. General firemaking, production and
+  other quest changes are separate contributions.
+
+Each branch starts at upstream `b3ddc3f67` and excludes SDK integration and our
+shared contributor notes. Validate each branch independently before proposing
+its PR; do not merge these topic branches into one another. A PR can retain
+several related commits. Worktrees preserve the integrated main checkout.
+
 ## Existing changes to know about
 
 - Tutorial progress requires real XP increases. Stage-gated doors/gates use
