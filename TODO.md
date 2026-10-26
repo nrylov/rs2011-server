@@ -1,6 +1,6 @@
 # Base-server backlog
 
-Last reviewed: 2026-10-23. See [project context](PROJECT_CONTEXT.md).
+Last reviewed: 2026-10-25. See [project context](PROJECT_CONTEXT.md).
 Reported issues below are not yet verified against current source unless stated.
 SDK/client issues belong in the sibling
 [rs2011-ts backlog](https://github.com/nrylov/rs2011-ts/blob/main/TODO.md).
@@ -55,14 +55,21 @@ from older runtime builds or agent assumptions and may already be resolved.
 
 ## Upstream contributions
 
-- [ ] Review and submit the separate Ernest, Vampire Slayer and Tutorial Island
-  topic branches (independent tests passed: Ernest 10, Vampire 9, Tutorial 138).
-  Branch names/worktrees and scope
-  are recorded in PROJECT_CONTEXT.md; no upstream PR has been opened yet.
+- [ ] Finish review of [Ernest PR #1403](https://github.com/GregHib/void/pull/1403).
+  Maintainer feedback is implemented on the topic branch; the isolated manual
+  playtest is in progress. Gate swing direction has been visually approved.
+- [ ] Review and submit the independent Vampire Slayer and Tutorial Island
+  branches. They remain separate from Ernest; names/worktrees and scope are
+  recorded in PROJECT_CONTEXT.md.
 - [ ] Prepare other fixes on separate upstream-based branches when requested.
   The Tutorial Island rat fix is already upstream and needs no duplicate PR.
 
 ## Recently completed
+
+- [x] Synchronize integrated main and all three contribution branches with
+  upstream b3862dbad. Preserved published history and upstream AGENTS.md
+  guidance; 478 focused tests passed without failures or skips. Source only;
+  the active isolated playtest was not restarted or redeployed.
 
 - [x] Imps fight back after teleporting: each teleport re-anchors `spawn_tile`
   (respawn still uses `respawn_tile`), so the combat leash follows the imp

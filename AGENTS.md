@@ -1,3 +1,5 @@
+@[.claude/CLAUDE.md](.claude/CLAUDE.md)
+
 # Base-server development guide
 
 Before changing code, read [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) and

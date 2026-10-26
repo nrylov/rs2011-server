@@ -1,6 +1,6 @@
 # Base-server contributor context
 
-Last reviewed: 2026-10-23. Read [AGENTS.md](AGENTS.md) and [TODO.md](TODO.md).
+Last reviewed: 2026-10-25. Read [AGENTS.md](AGENTS.md) and [TODO.md](TODO.md).
 These files are shared by humans, Codex and Claude. Current source and tests take
 precedence over stale notes.
 
@@ -37,6 +37,20 @@ Gertrude entry. Verification passed 505 gameplay, 1,340 engine and 25 cache
 tests, with eight existing engine/cache skips. The live release runtime, saves
 and SDK services were not changed or restarted.
 
+On 2026-10-25, merged upstream through `b3862dbad` into the integrated main and
+all three contribution branches without rewriting published history. The two
+new upstream commits fix built-in bot activity usability/equipment checks and
+expand contributor guidance. Only integrated main had a textual conflict:
+its existing AGENTS.md is retained together with upstream's link to the shared
+`.claude/CLAUDE.md` instructions. Treat upstream AGENTS.md as the contribution
+entry point on every branch and follow its linked code-style, architecture and
+testing guides for future work; preserve that linkage during later merges. The
+main branch also retains the existing imp-retaliation fix.
+Validation passed 244 integrated-branch bot/imp tests, 87 Ernest/object tests,
+nine Vampire Slayer tests and 138 Tutorial Island tests: 478 total, with no
+failures or skips. The active isolated Ernest playtest was not restarted or
+redeployed by this sync.
+
 Use separate topic branches from `upstream/main`, not the integrated fork main,
 for upstream PRs. Existing isolated worktrees beside this repository:
 
@@ -50,12 +64,22 @@ for upstream PRs. Existing isolated worktrees beside this repository:
   fix is already upstream and is omitted. General firemaking, production and
   other quest changes are separate contributions.
 
-Each branch starts at upstream `b3ddc3f67` and excludes SDK integration and our
-shared contributor notes. Independent Java 21 checks passed 10 Ernest, 9 Vampire
-Slayer and 138 Tutorial Island tests, with no failures or skips. No upstream PR
-has been opened. When preparing PRs target GregHib/void main, not fork main;
+Each branch was created from upstream `b3ddc3f67` and now also contains the
+merge through `b3862dbad`. They exclude SDK integration and our shared
+contributor notes. Current Java 21 branch checks passed 87 Ernest/object, nine
+Vampire Slayer and 138 Tutorial Island tests, with no failures or skips. No upstream PR
+has been opened for Vampire Slayer or Tutorial Island. Ernest is under review
+in [GregHib/void #1403](https://github.com/GregHib/void/pull/1403). When preparing
+PRs target GregHib/void main, not fork main;
 do not merge these topic branches into one another. A PR can retain
 several related commits. Worktrees preserve the integrated main checkout.
+
+The Ernest topic branch includes later dialogue, restoration and passage work
+not yet merged into integrated main. It uses native varp-32 NPC roots 3289/3290,
+with restored=3 and completed=4, and no custom engine changes. Received machine
+parts persist so interrupted endings can resume. The user visually confirmed
+the cellar gates now open in the direction of their existing crack. Do not
+replace this newer topic work with main's earlier quest implementation.
 
 ## Existing changes to know about
 
@@ -152,8 +176,9 @@ data. Base-game fixes do not intrinsically require the old SDK overlay.
 On 2026-10-23, the remaining Caitlin/Reese drop changes were activated after
 verifying old/staged overlay hashes and backing up saves, configuration and the
 previous overlay. All three Blood Pact weapons now share the no-expiry behavior
-in the local release. Main game/gateway/client services are online; an agent is
-playing, so coordinate reloads. `rs2011-ts/dev/backups/last-weapon-activation.json`
+in the local release. The main game/gateway/client services are currently
+stopped; an isolated Ernest playtest is running from the Ernest topic branch. Coordinate reloads
+before interrupting that playtest. `rs2011-ts/dev/backups/last-weapon-activation.json`
 is the private activation record. The user's temporary **10x XP** remains an
 ignored local setting, not an upstream default.
 
