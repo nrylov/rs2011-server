@@ -1,6 +1,6 @@
 # Base-server backlog
 
-Last reviewed: 2026-10-25. See [project context](PROJECT_CONTEXT.md).
+Last reviewed: 2026-10-26. See [project context](PROJECT_CONTEXT.md).
 Reported issues below are not yet verified against current source unless stated.
 SDK/client issues belong in the sibling
 [rs2011-ts backlog](https://github.com/nrylov/rs2011-ts/blob/main/TODO.md).
@@ -65,6 +65,12 @@ from older runtime builds or agent assumptions and may already be resolved.
   The Tutorial Island rat fix is already upstream and needs no duplicate PR.
 
 ## Recently completed
+
+- [x] Synchronize all four server branches through upstream 3955cf47d and apply
+  the maintainer's codebase conventions to the Vampire Slayer and Tutorial
+  Island topic branches. The latter's remaining fixes are not yet upstream;
+  rat aggression is already omitted. Keep the necessary message hook as agreed.
+  Passed 479 focused tests. Source only: no deployment or live account changes.
 
 - [x] Synchronize integrated main and all three contribution branches with
   upstream b3862dbad. Preserved published history and upstream AGENTS.md

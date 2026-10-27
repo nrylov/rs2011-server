@@ -1,6 +1,6 @@
 # Base-server contributor context
 
-Last reviewed: 2026-10-25. Read [AGENTS.md](AGENTS.md) and [TODO.md](TODO.md).
+Last reviewed: 2026-10-26. Read [AGENTS.md](AGENTS.md) and [TODO.md](TODO.md).
 These files are shared by humans, Codex and Claude. Current source and tests take
 precedence over stale notes.
 
@@ -51,6 +51,31 @@ nine Vampire Slayer tests and 138 Tutorial Island tests: 478 total, with no
 failures or skips. The active isolated Ernest playtest was not restarted or
 redeployed by this sync.
 
+On 2026-10-26, merged upstream through `3955cf47d` into main and all three
+contribution branches. Upstream adds transformation documentation and a faster,
+shared WorldTest lifecycle with fork-specific temporary data and optional
+coverage. The merges are separate from the contribution cleanup commits.
+Validation passed 244 main bot/imp, 87 Ernest/object, nine Vampire Slayer and
+139 Tutorial Island tests: 479 total, without failures or skips.
+
+Greg's codebase guidance is applied to the other topic branches:
+- Vampire Slayer cleanup `f3e8d56ef` splits Morgan, Harlow's advice, the drawers,
+  coffin, Count and journal into focused scripts with thin registrations and
+  member/companion helpers. Its engine tree matches upstream exactly.
+- Tutorial cleanup `a10487fdf` uses native object teleport hooks for the ladders,
+  keeps pending feedback in a declared non-persistent player variable, and moves
+  recovery/XP logic into private members. Its upstream-equivalence audit found
+  the XP guard, personal passages, visible feedback and instruction recovery
+  still needed. The rat-aggression fix is already upstream and already excluded.
+- The user explicitly approved retaining the tutorial's small outgoing-message
+  observer: the current content APIs have no corresponding event, and the
+  existing text history discards ChatType. Content owns all filtering and UI;
+  avoid adding further engine extensions. The exception is not SDK-specific.
+
+These cleanup commits are on their independent contribution branches, not
+backported into integrated main. No running services, saves or playtest runtime
+were changed. Local audit details: `dev/notes/contribution-review-20261026.md`.
+
 Use separate topic branches from `upstream/main`, not the integrated fork main,
 for upstream PRs. Existing isolated worktrees beside this repository:
 
@@ -65,9 +90,9 @@ for upstream PRs. Existing isolated worktrees beside this repository:
   other quest changes are separate contributions.
 
 Each branch was created from upstream `b3ddc3f67` and now also contains the
-merge through `b3862dbad`. They exclude SDK integration and our shared
+merges through `3955cf47d`. They exclude SDK integration and our shared
 contributor notes. Current Java 21 branch checks passed 87 Ernest/object, nine
-Vampire Slayer and 138 Tutorial Island tests, with no failures or skips. No upstream PR
+Vampire Slayer and 139 Tutorial Island tests, with no failures or skips. No upstream PR
 has been opened for Vampire Slayer or Tutorial Island. Ernest is under review
 in [GregHib/void #1403](https://github.com/GregHib/void/pull/1403). When preparing
 PRs target GregHib/void main, not fork main;
