@@ -92,10 +92,12 @@ for upstream PRs. Existing isolated worktrees beside this repository:
 Each branch was created from upstream `b3ddc3f67` and now also contains the
 merges through `3955cf47d`. They exclude SDK integration and our shared
 contributor notes. Current Java 21 branch checks passed 87 Ernest/object, nine
-Vampire Slayer and 139 Tutorial Island tests, with no failures or skips. No upstream PR
-has been opened for Vampire Slayer or Tutorial Island. Ernest is under review
-in [GregHib/void #1403](https://github.com/GregHib/void/pull/1403). When preparing
-PRs target GregHib/void main, not fork main;
+Vampire Slayer and 139 Tutorial Island tests, with no failures or skips.
+Ernest is under review in [#1403](https://github.com/GregHib/void/pull/1403).
+Vampire Slayer is draft [#1412](https://github.com/GregHib/void/pull/1412), and
+Tutorial Island is draft [#1413](https://github.com/GregHib/void/pull/1413).
+Both drafts target GregHib/void main and describe their validation and remaining
+presentation/API review. When preparing PRs target GregHib/void main, not fork main;
 do not merge these topic branches into one another. A PR can retain
 several related commits. Worktrees preserve the integrated main checkout.
 

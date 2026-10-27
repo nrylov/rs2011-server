@@ -58,9 +58,11 @@ from older runtime builds or agent assumptions and may already be resolved.
 - [ ] Finish review of [Ernest PR #1403](https://github.com/GregHib/void/pull/1403).
   Maintainer feedback is implemented on the topic branch; the isolated manual
   playtest is in progress. Gate swing direction has been visually approved.
-- [ ] Review and submit the independent Vampire Slayer and Tutorial Island
-  branches. They remain separate from Ernest; names/worktrees and scope are
-  recorded in PROJECT_CONTEXT.md.
+- [ ] Finish gameplay/presentation review of Vampire Slayer draft
+  [#1412](https://github.com/GregHib/void/pull/1412).
+- [ ] Finish gameplay and message-hook review of Tutorial Island draft
+  [#1413](https://github.com/GregHib/void/pull/1413).
+  Both drafts remain independent of Ernest and target upstream main.
 - [ ] Prepare other fixes on separate upstream-based branches when requested.
   The Tutorial Island rat fix is already upstream and needs no duplicate PR.
 
